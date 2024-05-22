@@ -1,0 +1,13 @@
+.form__result {
+    background-color: hsl(208, 46%, 14%);
+    border-bottom: solid #acc6d5;
+    display: flex;
+}
+
+.form__labelText {
+    max-width: 150px;
+    width: 100%;
+    display: inline-block;
+    margin: 15px 5px;
+    color: white;
+}
