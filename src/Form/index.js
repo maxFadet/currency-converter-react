@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { currencies } from "./currencies";
-import  Result  from "./Result";
+import currencies from "./currencies";
+import Result from "./Result";
 import "./style.css"
 
 
 const Form = () => {
+    const [amount, setAmount] = useState("");
+    const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
+    const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
 
-
-
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+    }
 
 
     return (
-        <form className="form">
+        <form onSubmit={onFormSubmit} className="form">
             <fieldset className="form__fieldset">
                 <legend className="form__name">
                     Kalkulator walutowy
@@ -32,6 +36,8 @@ const Form = () => {
                             step="0.01"
                             autoFocus
                             required
+                            value={amount}
+                            onChange={({ target }) => setAmount(target.value)}
                         />
                     </label>
                 </p>
@@ -41,10 +47,19 @@ const Form = () => {
                         <select
                             className="form__textArea"
                             name="currencyHave"
+                            value={currencyHave}
+                            onChange={({ target }) => setCurrencyHave(target.value)}
                         >
-                            <option value="1">PLN</option>
-                            <option value="4.17">USD</option>
-                            <option value="4.59">EUR</option>
+                            {currencies.map(currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.short}
+                                >
+                                    {currency.name}
+                                </option>
+                            ))}
+
+
                         </select>
                     </label>
                 </p>
@@ -54,10 +69,17 @@ const Form = () => {
                         <select
                             className="form__textArea form__textArea--otherColor"
                             name="currencyGet"
+                            value={currencyGet}
+                            onChange={({ target }) => setCurrencyGet(target.value)}
                         >
-                            <option value="1">PLN</option>
-                            <option value="4.17">USD</option>
-                            <option value="4.59">EUR</option>
+                            {currencies.map(currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.short}
+                                >
+                                    {currency.name}
+                                </option>
+                            ))}
                         </select>
                     </label>
                 </p>

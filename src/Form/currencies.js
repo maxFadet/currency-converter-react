@@ -1,4 +1,9 @@
-const correnies = [
+const currencies = [
+    {
+        short: "PLN",
+        name: "Polski złoty",
+        rate: 1,
+    },
     {
         short: "EUR",
         name: "Euro",
@@ -10,3 +15,5 @@ const correnies = [
         rate: 4.17,
     }
 ];
+
+export default currencies;
