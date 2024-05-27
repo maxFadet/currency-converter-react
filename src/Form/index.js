@@ -5,6 +5,7 @@ import "./style.css";
 
 const Form = () => {
     const [amount, setAmount] = useState("");
+    const [initialAmount, setInitialAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
     const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
     const [result, setResult] = useState(null);
@@ -16,6 +17,7 @@ const Form = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+
         const getCurrencyRate = (currencyShort) => {
             const foundCurrency = currencies.find(curruncy => curruncy.short === currencyShort);
             return foundCurrency ? foundCurrency.rate : 1;
@@ -26,7 +28,9 @@ const Form = () => {
         const calculatedResult = (conversion.amount * rateFrom) / rateTo;
 
         setResult(calculatedResult.toFixed(2));
-        setAmount(conversion.amount);
+        setConversion({ ...conversion, amount: "" });
+        setAmount("");
+
         setCurrencyHave(conversion.currencyHave);
         setCurrencyGet(conversion.currencyGet);
     };
@@ -54,7 +58,10 @@ const Form = () => {
                             autoFocus
                             required
                             value={conversion.amount}
-                            onChange={({ target }) => setConversion({ ...conversion, amount: target.value })}
+                            onChange={({ target }) => {
+                                setConversion({ ...conversion, amount: target.value.slice(0, 13) });
+                                setInitialAmount(target.value);
+                            }}
                         />
                     </label>
                 </p>
@@ -104,8 +111,10 @@ const Form = () => {
             </fieldset>
             {result !== null && (
                 <Result
+                    conversionedAmount={initialAmount}
                     amount={result}
                     currencyGet={currencyGet}
+                    currencyHave={currencyHave}
                 />
             )}
         </form>
