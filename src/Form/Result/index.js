@@ -1,11 +1,13 @@
 import "./style.css";
 
-const Result = () => (
-    <p className="form__result">
-        <span className="form__labelText">Otrzymam:</span>
-        <strong className="form__labelText">0.00</strong>
-        <span className="form__labelText"></span>
-    </p>
-);
+const Result = ({ amount, currencyGet }) => {
+    return (
+        < p className="form__result" >
+            <span className="form__labelText">Otrzymam:</span>
+            <strong className="form__labelText">{amount}</strong>
+            <span className="form__labelText">{currencyGet}</span>
+        </p >
+    );
+};
 
 export default Result;

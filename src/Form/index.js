@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import currencies from "./currencies";
 import Result from "./Result";
-import "./style.css"
-
+import "./style.css";
 
 const Form = () => {
     const [amount, setAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
     const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
+    const [result, setResult] = useState(null);
+    const [conversion, setConversion] = useState({
+        amount: "",
+        currencyHave: currencies[0].short,
+        currencyGet: currencies[1].short,
+    });
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-    }
+        const getCurrencyRate = (currencyShort) => {
+            const foundCurrency = currencies.find(curruncy => curruncy.short === currencyShort);
+            return foundCurrency ? foundCurrency.rate : 1;
+        };
 
+        const rateFrom = getCurrencyRate(conversion.currencyHave);
+        const rateTo = getCurrencyRate(conversion.currencyGet);
+        const calculatedResult = (conversion.amount * rateFrom) / rateTo;
+
+        setResult(calculatedResult.toFixed(2));
+        setAmount(conversion.amount);
+        setCurrencyHave(conversion.currencyHave);
+        setCurrencyGet(conversion.currencyGet);
+    };
 
     return (
         <form onSubmit={onFormSubmit} className="form">
@@ -36,8 +53,8 @@ const Form = () => {
                             step="0.01"
                             autoFocus
                             required
-                            value={amount}
-                            onChange={({ target }) => setAmount(target.value)}
+                            value={conversion.amount}
+                            onChange={({ target }) => setConversion({ ...conversion, amount: target.value })}
                         />
                     </label>
                 </p>
@@ -47,8 +64,8 @@ const Form = () => {
                         <select
                             className="form__textArea"
                             name="currencyHave"
-                            value={currencyHave}
-                            onChange={({ target }) => setCurrencyHave(target.value)}
+                            value={conversion.currencyHave}
+                            onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
                         >
                             {currencies.map(currency => (
                                 <option
@@ -58,8 +75,6 @@ const Form = () => {
                                     {currency.name}
                                 </option>
                             ))}
-
-
                         </select>
                     </label>
                 </p>
@@ -69,8 +84,8 @@ const Form = () => {
                         <select
                             className="form__textArea form__textArea--otherColor"
                             name="currencyGet"
-                            value={currencyGet}
-                            onChange={({ target }) => setCurrencyGet(target.value)}
+                            value={conversion.currencyGet}
+                            onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
                         >
                             {currencies.map(currency => (
                                 <option
@@ -83,8 +98,16 @@ const Form = () => {
                         </select>
                     </label>
                 </p>
+                <p>
+                    <button type="submit">Przelicz</button>
+                </p>
             </fieldset>
-            <Result />
+            {result !== null && (
+                <Result
+                    amount={result}
+                    currencyGet={currencyGet}
+                />
+            )}
         </form>
     );
 };

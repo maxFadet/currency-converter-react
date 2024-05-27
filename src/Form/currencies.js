@@ -7,12 +7,12 @@ const currencies = [
     {
         short: "EUR",
         name: "Euro",
-        rate: 4.59,
+        rate: 4.27,
     },
     {
         short: "USD",
         name: "Dolar amerykański",
-        rate: 4.17,
+        rate: 3.93,
     }
 ];
 
