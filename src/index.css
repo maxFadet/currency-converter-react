@@ -16,3 +16,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.form__button {
+  cursor: pointer;
+}
+
+.form__textArea--otherColor {
+  cursor: pointer;
+}

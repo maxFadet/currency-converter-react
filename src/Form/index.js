@@ -19,7 +19,7 @@ const Form = () => {
         event.preventDefault();
 
         const getCurrencyRate = (currencyShort) => {
-            const foundCurrency = currencies.find(curruncy => curruncy.short === currencyShort);
+            const foundCurrency = currencies.find(currency => currency.short === currencyShort);
             return foundCurrency ? foundCurrency.rate : 1;
         };
 
@@ -30,6 +30,7 @@ const Form = () => {
         setResult(calculatedResult.toFixed(2));
         setConversion({ ...conversion, amount: "" });
         setAmount("");
+        setInitialAmount(conversion.amount);
 
         setCurrencyHave(conversion.currencyHave);
         setCurrencyGet(conversion.currencyGet);
@@ -46,77 +47,76 @@ const Form = () => {
                         alt="wallet"
                     />
                 </legend>
-                <p>
-                    <label>
-                        <span className="form__labelText">Wymieniam*</span>
-                        <input
-                            className="form__textArea"
-                            name="cash"
-                            type="number"
-                            placeholder="kwota"
-                            step="0.01"
-                            autoFocus
-                            required
-                            value={conversion.amount}
-                            onChange={({ target }) => {
-                                setConversion({ ...conversion, amount: target.value.slice(0, 13) });
-                                setInitialAmount(target.value);
-                            }}
-                        />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <span className="form__labelText"></span>
-                        <select
-                            className="form__textArea"
-                            name="currencyHave"
-                            value={conversion.currencyHave}
-                            onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
-                        >
-                            {currencies.map(currency => (
-                                <option
-                                    key={currency.short}
-                                    value={currency.short}
-                                >
-                                    {currency.name}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <span className="form__labelText">Na</span>
-                        <select
-                            className="form__textArea form__textArea--otherColor"
-                            name="currencyGet"
-                            value={conversion.currencyGet}
-                            onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
-                        >
-                            {currencies.map(currency => (
-                                <option
-                                    key={currency.short}
-                                    value={currency.short}
-                                >
-                                    {currency.name}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                </p>
-                <p>
-                    <button type="submit">Przelicz</button>
-                </p>
+
+                <label className="form__labelBox">
+                    <span className="form__labelText">Wymieniam*</span>
+                    <input
+                        className="form__textArea"
+                        name="cash"
+                        type="number"
+                        placeholder="kwota"
+                        step="0.01"
+                        autoFocus
+                        required
+                        value={conversion.amount}
+                        onChange={({ target }) => {
+                            setConversion({ ...conversion, amount: target.value.slice(0, 13) });
+                            setInitialAmount(target.value);
+                        }}
+                    />
+                    <select
+                        className="form__textArea form__textArea--otherColor"
+                        name="currencyHave"
+                        value={conversion.currencyHave}
+                        onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
+                    >
+                        {currencies.map(currency => (
+                            <option
+                                key={currency.short}
+                                value={currency.short}
+                            >
+                                {currency.name}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+
+                <label className="form__labelBox form__labelBox--twoColumns">
+                    <span className="form__labelText">Na</span>
+                    <select
+                        className="form__textArea form__textArea--otherColor"
+                        name="currencyGet"
+                        value={conversion.currencyGet}
+                        onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
+                    >
+                        {currencies.map(currency => (
+                            <option
+                                key={currency.short}
+                                value={currency.short}
+                            >
+                                {currency.name}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+
+                <label className="form__labelBox form__labelBox--expandedBox">
+                    <button
+                        className="form__button"
+                        type="submit"
+                    >
+                        Przelicz
+                    </button>
+                </label>
+                {result !== null && (
+                    <Result
+                        conversionedAmount={initialAmount}
+                        amount={result}
+                        currencyGet={currencyGet}
+                        currencyHave={currencyHave}
+                    />
+                )}
             </fieldset>
-            {result !== null && (
-                <Result
-                    conversionedAmount={initialAmount}
-                    amount={result}
-                    currencyGet={currencyGet}
-                    currencyHave={currencyHave}
-                />
-            )}
         </form>
     );
 };

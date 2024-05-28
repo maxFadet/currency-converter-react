@@ -1,13 +1,19 @@
-.form__result {
-    background-color: hsl(208, 46%, 14%);
-    border-bottom: solid #acc6d5;
-    display: flex;
+.result {
+    text-align: center;
 }
 
-.form__labelText {
-    max-width: 150px;
-    width: 100%;
-    display: inline-block;
-    margin: 15px 5px;
-    color: white;
+.result__text {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.result__text--smollerText {
+    font-size: 10px;
+    word-break: normal;
+    line-height: 1.5;
+}
+
+.result__separator {
+    margin: 0 20px;
 }
