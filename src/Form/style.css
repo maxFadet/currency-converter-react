@@ -24,17 +24,11 @@
 }
 
 .form__name {
-    background-color: #132433;
     padding: 10px;
-    color: white;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.form__image {
-    width: 50px;
-    margin-left: 10px;
+    color: #132433;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .form__textArea--otherColor {
@@ -49,7 +43,7 @@
 }
 
 .form__labelBox--twoColumns {
-    grid-template-columns: auto 66%;
+    grid-template-columns: auto 65%;
 }
 
 .form__labelBox--expandedBox {

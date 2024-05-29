@@ -38,14 +38,9 @@ const Form = () => {
     return (
         <form onSubmit={onFormSubmit} className="form">
             <fieldset className="form__fieldset">
-                <legend className="form__name">
-                    Kalkulator walutowy
-                    <img
-                        className="form__image"
-                        src="https://i.postimg.cc/nh2vgf08/portfel.png"
-                        alt="wallet"
-                    />
-                </legend>
+                <div className="form__name">
+                    Kalkulator walutowy 
+                </div>
 
                 <label className="form__labelBox">
                     <span className="form__labelText">Wymieniam*</span>
