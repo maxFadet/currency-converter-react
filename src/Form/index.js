@@ -25,15 +25,14 @@ const Form = () => {
 
         const rateFrom = getCurrencyRate(conversion.currencyHave);
         const rateTo = getCurrencyRate(conversion.currencyGet);
-        const calculatedResult = (conversion.amount * rateFrom) / rateTo;
+        const calculatedResult = (amount * rateFrom) / rateTo;
 
         setResult(calculatedResult.toFixed(2));
-        setConversion({ ...conversion, amount: "" });
-        setAmount("");
-        setInitialAmount(conversion.amount);
+        setInitialAmount(amount);
 
         setCurrencyHave(conversion.currencyHave);
         setCurrencyGet(conversion.currencyGet);
+        setAmount("");
     };
 
     return (
@@ -58,11 +57,8 @@ const Form = () => {
                         step="0.01"
                         autoFocus
                         required
-                        value={conversion.amount}
-                        onChange={({ target }) => {
-                            setConversion({ ...conversion, amount: target.value.slice(0, 13) });
-                            setInitialAmount(target.value);
-                        }}
+                        value={amount}
+                        onChange={({ target }) => setAmount(target.value.slice(0, 13))}
                     />
                     <select
                         className="form__textArea form__textArea--otherColor"
