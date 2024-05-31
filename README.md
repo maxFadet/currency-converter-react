@@ -56,10 +56,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 &nbsp;
 ## The demonstration of the project's main functions:
 <div align="center">
-<img src="" title="BasicFunction" alt="BasicFunction" width="600"/>
+<img src="https://raw.githubusercontent.com/maxFadet/currency-converter-react/master/public/basic-functions.gif" title="BasicFunction" alt="BasicFunction" width="600"/>
 </div>
 
 &nbsp;
+
+## The demonstration of page responsiveness:
+<div align="center">
+<img src="https://github.com/maxFadet/currency-converter-react/blob/master/public/responsive.gif" alt="Responsiveness" width="600"/>
+</div>
+
+---
 
 ## Available Scripts
 
