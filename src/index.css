@@ -9,13 +9,12 @@
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   height: 100vh;
-  margin: 0;
   background-image: url("../public/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  justify-content: center;
+  display: grid;
   align-items: center;
+  grid-template-rows: 1fr;
 }
 
 .form__button {

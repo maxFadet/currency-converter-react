@@ -37,77 +37,77 @@ const Form = () => {
 
     return (
         <form onSubmit={onFormSubmit} className="form">
-            <fieldset className="form__fieldset">
-                <div className="form__name">
-                    Kalkulator walutowy 
-                </div>
 
-                <label className="form__labelBox">
-                    <span className="form__labelText">Wymieniam*</span>
-                    <input
-                        className="form__textArea"
-                        name="cash"
-                        type="number"
-                        placeholder="kwota"
-                        step="0.01"
-                        autoFocus
-                        required
-                        value={amount}
-                        onChange={({ target }) => setAmount(target.value.slice(0, 13))}
-                    />
-                    <select
-                        className="form__textArea form__textArea--otherColor"
-                        name="currencyHave"
-                        value={conversion.currencyHave}
-                        onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
-                    >
-                        {currencies.map(currency => (
-                            <option
-                                key={currency.short}
-                                value={currency.short}
-                            >
-                                {currency.name}
-                            </option>
-                        ))}
-                    </select>
-                </label>
+            <header className="form__name">
+                Kalkulator walutowy
+            </header>
 
-                <label className="form__labelBox form__labelBox--twoColumns">
-                    <span className="form__labelText">Na</span>
-                    <select
-                        className="form__textArea form__textArea--otherColor"
-                        name="currencyGet"
-                        value={conversion.currencyGet}
-                        onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
-                    >
-                        {currencies.map(currency => (
-                            <option
-                                key={currency.short}
-                                value={currency.short}
-                            >
-                                {currency.name}
-                            </option>
-                        ))}
-                    </select>
-                </label>
+            <label className="form__labelBox">
+                <span className="form__labelText">Wymieniam*</span>
+                <input
+                    className="form__textArea"
+                    name="cash"
+                    type="number"
+                    placeholder="kwota"
+                    step="0.01"
+                    autoFocus
+                    required
+                    value={amount}
+                    onChange={({ target }) => setAmount(target.value.slice(0, 13))}
+                />
+                <select
+                    className="form__textArea form__textArea--otherColor"
+                    name="currencyHave"
+                    value={conversion.currencyHave}
+                    onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
+                >
+                    {currencies.map(currency => (
+                        <option
+                            key={currency.short}
+                            value={currency.short}
+                        >
+                            {currency.name}
+                        </option>
+                    ))}
+                </select>
+            </label>
 
-                <label className="form__labelBox form__labelBox--expandedBox">
-                    <button
-                        className="form__button"
-                        type="submit"
-                    >
-                        Przelicz
-                    </button>
-                </label>
-                {result !== null && (
-                    <Result
-                        conversionedAmount={initialAmount}
-                        amount={result}
-                        currencyGet={currencyGet}
-                        currencyHave={currencyHave}
-                    />
-                )}
-            </fieldset>
+            <label className="form__labelBox form__labelBox--twoColumns">
+                <span className="form__labelText">Na</span>
+                <select
+                    className="form__textArea form__textArea--otherColor"
+                    name="currencyGet"
+                    value={conversion.currencyGet}
+                    onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
+                >
+                    {currencies.map(currency => (
+                        <option
+                            key={currency.short}
+                            value={currency.short}
+                        >
+                            {currency.name}
+                        </option>
+                    ))}
+                </select>
+            </label>
+
+            <label className="form__labelBox form__labelBox--expandedBox">
+                <button
+                    className="form__button"
+                    type="submit"
+                >
+                    Przelicz
+                </button>
+            </label>
+            {result !== null && (
+                <Result
+                    conversionedAmount={initialAmount}
+                    amount={result}
+                    currencyGet={currencyGet}
+                    currencyHave={currencyHave}
+                />
+            )}
+
         </form>
     );
 };
