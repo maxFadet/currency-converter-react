@@ -1,6 +1,65 @@
-# Getting Started with Create React App
+# Currency Converter :currency_exchange:
 
+## Demo
+
+https://maxfadet.github.io/currency-converter-react/
+
+## Description:
+
+ Description This is a web application that allows the user to convert an amount from one currency to another. The user can select the currency to exchange and the currency they want to convert the amount into. After entering the amount and selecting currencies, the user clicks the "Przelicz" button to perform the conversion.
+ 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## :hammer_and_wrench: Languages and Tools :
+
+&nbsp;
+<div>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
+</div>
+
+&nbsp;
+  - Applied immutability in JavaScript
+  - React useState Hook
+  - ES6+ Features JavaScript
+  - CSS Grid Layout
+  - CSS Flex Layout
+  - Media-queries
+  - Normalize.css
+  - BEM convention
+  - Markdown
+&nbsp;
+
+## Key Features
+
+1. **Input New Amount for Conversion:**
+   - Users can input the amount to convert by entering a value in the input field and selecting currencies.
+
+2. **Select Conversion Currencies:**
+   - Users can choose the currency they want to convert from and the currency they want to convert to.
+
+3. **Perform Conversion:**
+   - Users can click the "Przelicz" button to execute the conversion of the entered amount from the selected currency to another.
+
+4. **Display Conversion Result:**
+   - After clicking the "Przelicz" button, users will see the conversion result displayed on the screen.
+
+5. **Clear Input:**
+   - The input field will automatically clear after the conversion is performed.
+  
+6. **Support for Multiple Currencies:**
+   - The application supports multiple currencies for conversion, allowing users to work with different currency pairs.
+
+&nbsp;
+## The demonstration of the project's main functions:
+<div align="center">
+<img src="" title="BasicFunction" alt="BasicFunction" width="600"/>
+</div>
+
+&nbsp;
 
 ## Available Scripts
 
