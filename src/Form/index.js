@@ -9,7 +9,7 @@ const Form = () => {
     const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
     const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
     const [result, setResult] = useState(null);
-    const [conversion, setConversion] = useState({
+    const [conversionData, setConversionData] = useState({
         amount: "",
         currencyHave: currencies[0].short,
         currencyGet: currencies[1].short,
@@ -23,15 +23,15 @@ const Form = () => {
             return foundCurrency ? foundCurrency.rate : 1;
         };
 
-        const rateFrom = getCurrencyRate(conversion.currencyHave);
-        const rateTo = getCurrencyRate(conversion.currencyGet);
+        const rateFrom = getCurrencyRate(conversionData.currencyHave);
+        const rateTo = getCurrencyRate(conversionData.currencyGet);
         const calculatedResult = (amount * rateFrom) / rateTo;
 
         setResult(calculatedResult.toFixed(2));
         setInitialAmount(amount);
 
-        setCurrencyHave(conversion.currencyHave);
-        setCurrencyGet(conversion.currencyGet);
+        setCurrencyHave(conversionData.currencyHave);
+        setCurrencyGet(conversionData.currencyGet);
         setAmount("");
     };
 
@@ -57,8 +57,8 @@ const Form = () => {
                 <select
                     className="form__textArea form__textArea--otherColor"
                     name="currencyHave"
-                    value={conversion.currencyHave}
-                    onChange={({ target }) => setConversion({ ...conversion, currencyHave: target.value })}
+                    value={conversionData.currencyHave}
+                    onChange={({ target }) => setConversionData({ ...conversionData, currencyHave: target.value })}
                 >
                     {currencies.map(currency => (
                         <option
@@ -76,8 +76,8 @@ const Form = () => {
                 <select
                     className="form__textArea form__textArea--otherColor"
                     name="currencyGet"
-                    value={conversion.currencyGet}
-                    onChange={({ target }) => setConversion({ ...conversion, currencyGet: target.value })}
+                    value={conversionData.currencyGet}
+                    onChange={({ target }) => setConversionData({ ...conversionData, currencyGet: target.value })}
                 >
                     {currencies.map(currency => (
                         <option
