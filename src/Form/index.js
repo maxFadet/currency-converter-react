@@ -37,9 +37,9 @@ const Form = () => {
 
     return (
         <form onSubmit={onFormSubmit} className="form">
-            <header className="form__name">
+            <h1 className="form__name">
                 Kalkulator walutowy
-            </header>
+            </h1>
 
             <label className="form__labelBox">
                 <span className="form__labelText">Wymieniam*</span>
