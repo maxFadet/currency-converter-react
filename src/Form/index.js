@@ -14,7 +14,7 @@ const Form = () => {
         currencyHave: currencies[0].short,
         currencyGet: currencies[1].short,
     });
- 
+
     const onFormSubmit = (event) => {
         event.preventDefault();
 
