@@ -1,0 +1,5 @@
+.form__date {
+    display: flex;
+    justify-content: end;
+    color: black;
+}
