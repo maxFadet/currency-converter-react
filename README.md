@@ -24,9 +24,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 &nbsp;
   - Applied immutability in JavaScript
   - React useState Hook
+  - React useEffect Hook
+  - Asynchronous JavaScript
   - ES6+ Features JavaScript
   - CSS Grid Layout
   - CSS Flex Layout
+  - The box model
   - Media-queries
   - Normalize.css
   - BEM convention
@@ -53,17 +56,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 6. **Support for Multiple Currencies:**
    - The application supports multiple currencies for conversion, allowing users to work with different currency pairs.
 
+7. **Monitor the current time:**
+   - The user can also keep track of the current time and date at the top of the application.
+
 &nbsp;
 ## The demonstration of the project's main functions:
 <div align="center">
-<img src="https://raw.githubusercontent.com/maxFadet/currency-converter-react/master/public/basic-functions.gif" title="BasicFunction" alt="BasicFunction" width="600"/>
+<img src="https://raw.githubusercontent.com/maxFadet/currency-converter-react/master/basic-functions.gif" title="BasicFunction" alt="BasicFunction" width="600"/>
 </div>
 
 &nbsp;
 
 ## The demonstration of page responsiveness:
 <div align="center">
-<img src="https://github.com/maxFadet/currency-converter-react/blob/master/public/responsive.gif" alt="Responsiveness" width="600"/>
+<img src="https://raw.githubusercontent.com/maxFadet/currency-converter-react/master/responsiveness.gif" alt="Responsiveness" width="600"/>
 </div>
 
 ---
