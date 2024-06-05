@@ -14,16 +14,17 @@ const Clock = () => {
         weekday: "long",
         day: "numeric",
         month: "long",
-        year: "numeric"
     });
 
     const formattedTime = time.toLocaleTimeString();
 
     return (
         <div className="form__date">
-            <div>Dzisiaj jest</div>
-            <div>{formattedDate}</div>
-            <div>{formattedTime}</div>
+            <div>Dzisiaj jest &nbsp;</div>
+            <div>
+                {formattedDate},&nbsp;
+                {formattedTime}
+            </div>
         </div>
     );
 };
