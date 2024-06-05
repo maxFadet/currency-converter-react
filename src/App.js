@@ -1,5 +1,5 @@
-import Container from "./Container";
-import Form from "./Form";
+import Container from "./App/Container";
+import Form from "./App/Form";
 import "./index.css"
 
 function App() {
