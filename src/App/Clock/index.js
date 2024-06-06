@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useCurrentDate } from "./useCurrentDate";
 import "./style.css";
 
 const formattedDate = (time) => time.toLocaleDateString(undefined, {
@@ -11,18 +11,8 @@ const formattedDate = (time) => time.toLocaleDateString(undefined, {
 });
 
 const Clock = () => {
+    const time = useCurrentDate();
 
-    const [time, setTime] = useState(new Date());
-
-    useEffect(() => {
-        const timerID = setInterval(() => {
-            setTime(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(timerID)
-        };
-    }, []);
 
     return (
         <div className="form__date">
