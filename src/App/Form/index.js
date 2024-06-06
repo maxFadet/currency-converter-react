@@ -33,7 +33,6 @@ const Form = () => {
 
         setCurrencyHave(conversionData.currencyHave);
         setCurrencyGet(conversionData.currencyGet);
-        setAmount("");
     };
 
     return (
