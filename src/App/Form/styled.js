@@ -29,7 +29,7 @@ export const Section = styled.label`
 `;
 
 export const TwoColumnSection = styled(Section)`
-    grid-template-columns: auto 64%;
+    grid-template-columns: auto 65%;
 
     @media (max-width: 767px) {
         grid-template-columns: 1fr;
