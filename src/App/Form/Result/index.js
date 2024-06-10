@@ -1,6 +1,11 @@
 import { Container, Content, Separator, SmallContent } from "./styled"
 
-const Result = ({ amount, currencyGet, currencyHave, conversionedAmount }) => {
+const Result = ({
+    amount,
+    currencyGet,
+    currencyHave,
+    conversionedAmount
+}) => {
 
     return (
         <Container>

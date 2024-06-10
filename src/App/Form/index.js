@@ -70,7 +70,9 @@ const Form = () => {
                 <Selection
                     name="currencyHave"
                     value={conversionData.currencyHave}
-                    onChange={({ target }) => setConversionData({ ...conversionData, currencyHave: target.value })}
+                    onChange={({ target }) => setConversionData({
+                        ...conversionData, currencyHave: target.value
+                    })}
                 >
                     {currencies.map(currency => (
                         <option
@@ -90,7 +92,9 @@ const Form = () => {
                 <Selection
                     name="currencyGet"
                     value={conversionData.currencyGet}
-                    onChange={({ target }) => setConversionData({ ...conversionData, currencyGet: target.value })}
+                    onChange={({ target }) => setConversionData({
+                        ...conversionData, currencyGet: target.value
+                    })}
                 >
                     {currencies.map(currency => (
                         <option
