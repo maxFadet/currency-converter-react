@@ -1,9 +1,9 @@
-import "./style.css";
+import styled from "styled-components";
 
-const Container = ({ children }) => (
-    <div className="container">
-        {children}
-    </div>
-);
+const Container = styled.main`
+    margin: 0 auto;
+    padding: 15px;
+    max-width: 700px;
+`;
 
 export default Container;

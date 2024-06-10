@@ -2,7 +2,18 @@ import React, { useState } from "react";
 import Clock from "../Clock";
 import currencies from "./currencies";
 import Result from "./Result";
-import "./style.css";
+import {
+    Frame,
+    Title,
+    Section,
+    TwoColumnSection,
+    ExpendedSection,
+    SectionTitle,
+    Type,
+    Selection,
+    Button
+}
+    from "./styled";
 
 const Form = () => {
     const [amount, setAmount] = useState("");
@@ -36,16 +47,17 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={onFormSubmit} className="form">
+        <Frame onSubmit={onFormSubmit}>
             <Clock />
-            <h1 className="form__name">
+            <Title>
                 Kalkulator walutowy
-            </h1>
+            </Title>
 
-            <label className="form__labelBox">
-                <span className="form__labelText">Wymieniam*</span>
-                <input
-                    className="form__textArea"
+            <Section>
+                <SectionTitle>
+                    Wymieniam*
+                </SectionTitle>
+                <Type
                     name="cash"
                     type="number"
                     placeholder="kwota"
@@ -55,8 +67,7 @@ const Form = () => {
                     value={amount}
                     onChange={({ target }) => setAmount(target.value.slice(0, 13))}
                 />
-                <select
-                    className="form__textArea form__textArea--otherColor"
+                <Selection
                     name="currencyHave"
                     value={conversionData.currencyHave}
                     onChange={({ target }) => setConversionData({ ...conversionData, currencyHave: target.value })}
@@ -69,13 +80,14 @@ const Form = () => {
                             {currency.name}
                         </option>
                     ))}
-                </select>
-            </label>
+                </Selection>
+            </Section>
 
-            <label className="form__labelBox form__labelBox--twoColumns">
-                <span className="form__labelText">Na</span>
-                <select
-                    className="form__textArea form__textArea--otherColor"
+            <TwoColumnSection>
+                <SectionTitle>
+                    Na
+                </SectionTitle>
+                <Selection
                     name="currencyGet"
                     value={conversionData.currencyGet}
                     onChange={({ target }) => setConversionData({ ...conversionData, currencyGet: target.value })}
@@ -88,17 +100,14 @@ const Form = () => {
                             {currency.name}
                         </option>
                     ))}
-                </select>
-            </label>
+                </Selection>
+            </TwoColumnSection>
 
-            <label className="form__labelBox form__labelBox--expandedBox">
-                <button
-                    className="form__button"
-                    type="submit"
-                >
+            <ExpendedSection>
+                <Button type="submit">
                     Przelicz
-                </button>
-            </label>
+                </Button>
+            </ExpendedSection>
             {result !== null && (
                 <Result
                     conversionedAmount={initialAmount}
@@ -107,7 +116,7 @@ const Form = () => {
                     currencyHave={currencyHave}
                 />
             )}
-        </form>
+        </Frame>
     );
 };
 

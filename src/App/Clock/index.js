@@ -1,5 +1,5 @@
 import { useCurrentDate } from "./useCurrentDate";
-import "./style.css";
+import { Container } from "./styled";
 
 const formattedDate = (time) => time.toLocaleDateString(undefined, {
     weekday: "long",
@@ -13,14 +13,13 @@ const formattedDate = (time) => time.toLocaleDateString(undefined, {
 const Clock = () => {
     const time = useCurrentDate();
 
-
     return (
-        <div className="form__date">
+        <Container>
             <div>Dzisiaj jest &nbsp;</div>
             <div>
                 {formattedDate(time)}
             </div>
-        </div>
+        </Container>
     );
 };
 
