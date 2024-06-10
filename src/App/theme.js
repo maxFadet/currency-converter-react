@@ -36,4 +36,7 @@ export const theme = {
     breakpoints: {
         mobile: "767px",
     },
+    cursor: {
+        cursorPointer: "pointer",
+    },
 };

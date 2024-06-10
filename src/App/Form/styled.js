@@ -69,6 +69,7 @@ export const Button = styled.button`
   padding: ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.border.borderRadius};
   transition: 0.4s;
+  cursor: ${({ theme }) => theme.cursor.cursorPointer};
 
   &:hover {
     transform: scale(1.010);
