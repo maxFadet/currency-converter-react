@@ -5,17 +5,17 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.p`
-    font-size: 20px;
-    font-weight: bold;
-    margin: 15px 0;
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  margin: ${({ theme }) => theme.spacing.medium} 0;
 `;
 
 export const SmallContent = styled(Content)`
-    font-size: 10px;
-    word-break: normal;
-    line-height: 1.5;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  word-break: normal;
+  line-height: 1.5;
 `;
 
 export const Separator = styled.span`
-    margin: 0 20px;
+  margin: 0 ${({ theme }) => theme.spacing.large};
 `;

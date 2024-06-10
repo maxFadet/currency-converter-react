@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
     display: flex;
     justify-content: end;
-    color: grey;
+    color: ${({ theme }) => theme.colors.grey};
     font-family: "Courier Prime", monospace;
-    font-weight: 400;
+    font-weight: ${({ theme }) => theme.fontWeight.normal};
     font-style: normal;
     font-size: smaller;
 
-    @media (max-width: 767px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
         flex-direction: column;
     }
 `;
