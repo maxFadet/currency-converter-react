@@ -25,6 +25,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - Applied immutability in JavaScript
   - React useState Hook
   - React useEffect Hook
+  - React custom Hook
   - Asynchronous JavaScript
   - ES6+ Features JavaScript
   - CSS Grid Layout
@@ -32,6 +33,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - The box model
   - Media-queries
   - Normalize.css
+  - Styled components
   - BEM convention
   - Markdown
 &nbsp;
