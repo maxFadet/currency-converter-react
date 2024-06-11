@@ -5,13 +5,13 @@ export const Frame = styled.form`
   grid-gap: ${({ theme }) => theme.spacing.large};
   border: ${({ theme }) => theme.border.borderNone};
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.border.boxShadow};
   border-radius: ${({ theme }) => theme.border.borderRadius};
   padding: ${({ theme }) => theme.spacing.extraLarge};
+  filter: drop-shadow(0px 0px 30px black);
 `;
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.bigStone};
   font-size: ${({ theme }) => theme.fontSizes.large};
   text-align: center;
   margin-top: 0;
@@ -58,13 +58,13 @@ export const Selection = styled.select`
   ${({ theme }) => theme.border.borderLine} ${({ theme }) => theme.colors.lightGrey};
   padding: ${({ theme }) => theme.spacing.small};
   border-radius: ${({ theme }) => theme.border.borderRadius};
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.deepCerulean};
   color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Button = styled.button`
   border: ${({ theme }) => theme.border.borderNone};
-  background: ${({ theme }) => theme.colors.primary};
+  background: ${({ theme }) => theme.colors.bigStone};
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.border.borderRadius};
@@ -73,12 +73,12 @@ export const Button = styled.button`
 
   &:hover {
     transform: scale(1.010);
-    background: ${({ theme }) => theme.colors.buttonHover};
+    filter: ${({ theme }) => theme.filters.buttonHover};
   }
 
   &:active {
     transform: scale(1);
     transition: 0.09s ease;
-    background: ${({ theme }) => theme.colors.buttonActive};
+    filter: ${({ theme }) => theme.filters.buttonActive};
   }
 `;
