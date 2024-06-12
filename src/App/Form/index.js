@@ -64,6 +64,7 @@ const Form = () => {
                     step="0.01"
                     autoFocus
                     required
+                    min="0.01"
                     value={amount}
                     onChange={({ target }) => setAmount(target.value.slice(0, 13))}
                 />
