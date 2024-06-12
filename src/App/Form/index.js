@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Clock from "../Clock";
 import currencies from "./currencies";
 import Result from "./Result";
@@ -16,7 +16,7 @@ import {
     from "./styled";
 
 const Form = () => {
-    const [amount, setAmount] = useState("");
+    const [amount, setAmount] = useState(1);
     const [initialAmount, setInitialAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
     const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
@@ -26,10 +26,16 @@ const Form = () => {
         currencyHave: currencies[0].short,
         currencyGet: currencies[1].short,
     });
+    useEffect(() => {
+        calculateResult();
+    }, []);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+        calculateResult();
+    };
 
+    const calculateResult = () => {
         const getCurrencyRate = (currencyShort) => {
             const foundCurrency = currencies.find(currency => currency.short === currencyShort);
             return foundCurrency ? foundCurrency.rate : 1;
