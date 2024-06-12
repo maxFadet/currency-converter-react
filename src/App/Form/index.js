@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Clock from "../Clock";
 import currencies from "./currencies";
 import Result from "./Result";
@@ -16,6 +16,7 @@ import {
     from "./styled";
 
 const Form = () => {
+    const inputRef = useRef(null);
     const [amount, setAmount] = useState(1);
     const [initialAmount, setInitialAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
@@ -52,6 +53,10 @@ const Form = () => {
         setCurrencyGet(conversionData.currencyGet);
     };
 
+    const focusInput = () => {
+        inputRef.current.focus();
+    };
+
     return (
         <Frame onSubmit={onFormSubmit}>
             <Clock />
@@ -64,6 +69,7 @@ const Form = () => {
                     Wymieniam*
                 </SectionTitle>
                 <Type
+                    ref={inputRef}
                     name="cash"
                     type="number"
                     placeholder="kwota"
@@ -115,7 +121,7 @@ const Form = () => {
             </TwoColumnSection>
 
             <ExpendedSection>
-                <Button type="submit">
+                <Button type="submit" onClick={focusInput}>
                     Przelicz
                 </Button>
             </ExpendedSection>
