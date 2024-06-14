@@ -51,8 +51,8 @@ const Form = () => {
     }
 
     if (currencies.length > 0 && !conversionData.currencyHave && !conversionData.currencyGet) {
-        initializeCurrencies(); // Инициализация валют
-        calculateResult(); // Расчет начального результата
+        initializeCurrencies();
+        calculateResult();
     }
 
     return (
