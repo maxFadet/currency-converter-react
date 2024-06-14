@@ -82,3 +82,14 @@ export const Button = styled.button`
     filter: ${({ theme }) => theme.filters.buttonActive};
   }
 `;
+
+export const Loading = styled.div`
+  text-align: center;
+`;
+
+export const Error = styled.div`
+  text-align: center;
+  color: red;
+  font-size: large;
+  font-weight: 700;
+`;

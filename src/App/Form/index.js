@@ -10,7 +10,9 @@ import {
     ExpendedSection,
     SectionTitle,
     Type,
-    Button
+    Button,
+    Loading,
+    Error
 } from "./styled";
 import { useFetchCurrencies } from "./useFetchCurrencies";
 import { useCurrencyForm } from "./useCurrencyForm";
@@ -42,14 +44,6 @@ const Form = () => {
         inputRef.current.focus();
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
-
     if (currencies.length > 0 && !conversionData.currencyHave && !conversionData.currencyGet) {
         initializeCurrencies();
         calculateResult();
@@ -58,78 +52,78 @@ const Form = () => {
     return (
         <Frame onSubmit={onFormSubmit}>
             <Clock />
-            <Title>
-                Kalkulator walutowy
-            </Title>
-
-            <Section>
-                <SectionTitle>
-                    Wymieniam*
-                </SectionTitle>
-                <Type
-                    ref={inputRef}
-                    name="cash"
-                    type="number"
-                    placeholder="kwota"
-                    step="0.01"
-                    autoFocus
-                    required
-                    min="0.01"
-                    value={amount}
-                    onChange={({ target }) => setAmount(target.value.slice(0, 13))}
-                />
-                <Selection
-                    name="currencyHave"
-                    value={conversionData.currencyHave}
-                    onChange={({ target }) => setConversionData({
-                        ...conversionData, currencyHave: target.value
-                    })}
-                >
-                    {currencies.map(currency => (
-                        <option
-                            key={currency.short}
-                            value={currency.short}
+            <Title>Kalkulator walutowy</Title>
+            {loading && <Loading>Please wait. Currency loading in progress...</Loading>}
+            {error && <Error>Sorry, we couldn't fetch the currency rates at the moment.
+                Please check your internet connection and try again later.</Error>}
+            {!loading && !error && (
+                <>
+                    <Section>
+                        <SectionTitle>Wymieniam*</SectionTitle>
+                        <Type
+                            ref={inputRef}
+                            name="cash"
+                            type="number"
+                            placeholder="kwota"
+                            step="0.01"
+                            autoFocus
+                            required
+                            min="0.01"
+                            value={amount}
+                            onChange={({ target }) => setAmount(target.value.slice(0, 13))}
+                        />
+                        <Selection
+                            name="currencyHave"
+                            value={conversionData.currencyHave}
+                            onChange={({ target }) => setConversionData({
+                                ...conversionData, currencyHave: target.value
+                            })}
                         >
-                            {currency.name}
-                        </option>
-                    ))}
-                </Selection>
-            </Section>
+                            {currencies.map(currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.short}
+                                >
+                                    {currency.name}
+                                </option>
+                            ))}
+                        </Selection>
+                    </Section>
 
-            <TwoColumnSection>
-                <SectionTitle>
-                    Na
-                </SectionTitle>
-                <Selection
-                    name="currencyGet"
-                    value={conversionData.currencyGet}
-                    onChange={({ target }) => setConversionData({
-                        ...conversionData, currencyGet: target.value
-                    })}
-                >
-                    {currencies.map(currency => (
-                        <option
-                            key={currency.short}
-                            value={currency.short}
+                    <TwoColumnSection>
+                        <SectionTitle>Na</SectionTitle>
+                        <Selection
+                            name="currencyGet"
+                            value={conversionData.currencyGet}
+                            onChange={({ target }) => setConversionData({
+                                ...conversionData, currencyGet: target.value
+                            })}
                         >
-                            {currency.name}
-                        </option>
-                    ))}
-                </Selection>
-            </TwoColumnSection>
+                            {currencies.map(currency => (
+                                <option
+                                    key={currency.short}
+                                    value={currency.short}
+                                >
+                                    {currency.name}
+                                </option>
+                            ))}
+                        </Selection>
+                    </TwoColumnSection>
 
-            <ExpendedSection>
-                <Button type="submit" onClick={focusInput}>
-                    Przelicz
-                </Button>
-            </ExpendedSection>
-            {result !== null && (
-                <Result
-                    conversionedAmount={initialAmount}
-                    amount={result}
-                    currencyGet={currencyGet}
-                    currencyHave={currencyHave}
-                />
+                    <ExpendedSection>
+                        <Button type="submit" onClick={focusInput}>
+                            Przelicz
+                        </Button>
+                    </ExpendedSection>
+                    {result !== null && (
+                        <Result
+                            conversionedAmount={initialAmount}
+                            amount={result}
+                            currencyGet={currencyGet}
+                            currencyHave={currencyHave}
+                        />
+                    )}
+                </>
             )}
         </Frame>
     );
