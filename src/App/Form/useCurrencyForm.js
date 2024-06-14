@@ -33,6 +33,6 @@ export const useCurrencyForm = (currencies) => {
         currencyHave, setCurrencyHave,
         currencyGet, setCurrencyGet,
         conversionData, setConversionData,
-        initializeCurrencies // Экспортируем функцию инициализации
+        initializeCurrencies
     };
 };
