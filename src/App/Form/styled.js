@@ -19,7 +19,7 @@ export const Title = styled.h1`
 
 export const Section = styled.label`
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: ${({ theme }) => theme.spacing.large};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -28,7 +28,7 @@ export const Section = styled.label`
 `;
 
 export const TwoColumnSection = styled(Section)`
-  grid-template-columns: auto 65%;
+  grid-template-columns: auto 66%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
