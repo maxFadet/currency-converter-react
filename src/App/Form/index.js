@@ -1,61 +1,59 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Clock from "../Clock";
-import currencies from "./currencies";
 import Result from "./Result";
 import {
     Frame,
     Title,
     Section,
+    Selection,
     TwoColumnSection,
     ExpendedSection,
     SectionTitle,
     Type,
-    Selection,
     Button
-}
-    from "./styled";
+} from "./styled";
+import { useFetchCurrencies } from "./useFetchCurrencies";
+import { useCurrencyForm } from "./useCurrencyForm";
+import { useCalculateResult } from "./useCalculateResult";
 
 const Form = () => {
     const inputRef = useRef(null);
-    const [amount, setAmount] = useState(1);
-    const [initialAmount, setInitialAmount] = useState("");
-    const [currencyHave, setCurrencyHave] = useState(currencies[0].short);
-    const [currencyGet, setCurrencyGet] = useState(currencies[1].short);
-    const [result, setResult] = useState(null);
-    const [conversionData, setConversionData] = useState({
-        amount: "",
-        currencyHave: currencies[0].short,
-        currencyGet: currencies[1].short,
-    });
-    useEffect(() => {
-        calculateResult();
-    }, []);
+    const { currencies, loading, error } = useFetchCurrencies();
+    const {
+        amount, setAmount,
+        initialAmount, setInitialAmount,
+        currencyHave, setCurrencyHave,
+        currencyGet, setCurrencyGet,
+        conversionData, setConversionData,
+        initializeCurrencies
+    } = useCurrencyForm(currencies);
+
+    const { result, calculateResult } = useCalculateResult(currencies, conversionData, amount);
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult();
-    };
-
-    const calculateResult = () => {
-        const getCurrencyRate = (currencyShort) => {
-            const foundCurrency = currencies.find(currency => currency.short === currencyShort);
-            return foundCurrency ? foundCurrency.rate : 1;
-        };
-
-        const rateFrom = getCurrencyRate(conversionData.currencyHave);
-        const rateTo = getCurrencyRate(conversionData.currencyGet);
-        const calculatedResult = (amount * rateFrom) / rateTo;
-
-        setResult(calculatedResult.toFixed(2));
         setInitialAmount(amount);
-
         setCurrencyHave(conversionData.currencyHave);
         setCurrencyGet(conversionData.currencyGet);
+        calculateResult();
     };
 
     const focusInput = () => {
         inputRef.current.focus();
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (currencies.length > 0 && !conversionData.currencyHave && !conversionData.currencyGet) {
+        initializeCurrencies(); // Инициализация валют
+        calculateResult(); // Расчет начального результата
+    }
 
     return (
         <Frame onSubmit={onFormSubmit}>
