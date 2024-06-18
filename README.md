@@ -62,7 +62,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
    - The application supports multiple currencies for conversion, allowing users to work with different currency pairs.
 
 7. **Monitor the current time:**
-   - The user can also keep track of the current time and date at the top of the application.
+   - Users can also keep track of the current time and date at the top of the application.
+   
+8. **Always up-to-date exchange rates:**
+   - Data on current exchange rates are sourced from official sources and are always kept up to date.
 
 &nbsp;
 ## The demonstration of the project's main functions:
