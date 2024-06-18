@@ -24,12 +24,11 @@ const Result = ({
                 </strong>
             </Content>
             <SmallContent>
-                <p>
-                    Kursy pochodzą ze strony nbp.pl z tabeli nr 102/A/NBP/2024 z dnia &nbsp;
-                    <strong>
-                        {date.toLocaleDateString()}
-                    </strong>
-                </p>
+                Kursy walut pobierane są z Europejskiego Banku Centralnego.
+                Aktualne na dzień: &nbsp;
+                <strong>
+                    {date.toLocaleDateString()}
+                </strong>
             </SmallContent>
         </Container>
     );

@@ -12,7 +12,8 @@ import {
     Type,
     Button,
     Loading,
-    Error
+    Error,
+    ResultContainer
 } from "./styled";
 import { useFetchCurrencies } from "./useFetchCurrencies";
 import { useCurrencyForm } from "./useCurrencyForm";
@@ -116,15 +117,18 @@ const Form = () => {
                             Przelicz
                         </Button>
                     </ExpendedSection>
-                    {result !== null && (
-                        <Result
-                            date={date}
-                            conversionedAmount={initialAmount}
-                            amount={result}
-                            currencyGet={currencyGet}
-                            currencyHave={currencyHave}
-                        />
-                    )}
+
+                    <ResultContainer>
+                        {result !== null && (
+                            <Result
+                                date={date}
+                                conversionedAmount={initialAmount}
+                                amount={result}
+                                currencyGet={currencyGet}
+                                currencyHave={currencyHave}
+                            />
+                        )}
+                    </ResultContainer>
                 </>
             )}
         </Frame>

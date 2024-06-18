@@ -6,14 +6,11 @@ export const Container = styled.div`
 
 export const Content = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.medium};
-
   margin: ${({ theme }) => theme.spacing.medium} 0;
 `;
 
-export const SmallContent = styled(Content)`
+export const SmallContent = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  
-  word-break: normal;
   line-height: 1.5;
 `;
 

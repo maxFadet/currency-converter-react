@@ -93,3 +93,10 @@ export const Error = styled.div`
   font-size: large;
   font-weight: 700;
 `;
+
+export const ResultContainer = styled.div`
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
