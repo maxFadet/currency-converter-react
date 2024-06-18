@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 export const useCurrencyForm = (currencies) => {
-    const [amount, setAmount] = useState(1);
-    const [initialAmount, setInitialAmount] = useState(1);
+    const [amount, setAmount] = useState("");
+    const [initialAmount, setInitialAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState("PLN");
     const [currencyGet, setCurrencyGet] = useState("USD");
     const [conversionData, setConversionData] = useState({
-        amount: 1,
+        amount: "",
         currencyHave: "PLN",
         currencyGet: "USD",
     });
@@ -21,7 +21,7 @@ export const useCurrencyForm = (currencies) => {
         setCurrencyHave("PLN");
         setCurrencyGet("USD");
         setConversionData({
-            amount: 1,
+            amount: "",
             currencyHave: "PLN",
             currencyGet: "USD",
         });
