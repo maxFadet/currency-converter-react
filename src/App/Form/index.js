@@ -118,7 +118,7 @@ const Form = () => {
                     </ExpendedSection>
                     {result !== null && (
                         <Result
-                            date={new Date(date)}
+                            date={date}
                             conversionedAmount={initialAmount}
                             amount={result}
                             currencyGet={currencyGet}
