@@ -4,7 +4,8 @@ const Result = ({
     amount,
     currencyGet,
     currencyHave,
-    conversionedAmount
+    conversionedAmount,
+    date
 }) => {
 
     return (
@@ -23,7 +24,12 @@ const Result = ({
                 </span>
             </Content>
             <SmallContent>
-                Kursy pochodzą ze strony nbp.pl z tabeli nr 102/A/NBP/2024 z dnia 2024-05-27
+                <p>
+                    Kursy pochodzą ze strony nbp.pl z tabeli nr 102/A/NBP/2024 z dnia &nbsp;
+                    <strong>
+                        {date.toLocaleDateString()}
+                    </strong>
+                </p>
             </SmallContent>
         </Container>
     );

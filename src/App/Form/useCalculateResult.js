@@ -5,8 +5,7 @@ export const useCalculateResult = (currencies, conversionData, amount) => {
 
     const calculateResult = () => {
         const getCurrencyRate = (currencyShort) => {
-            const foundCurrency = currencies.find(currency => currency.short === currencyShort);
-            return foundCurrency ? foundCurrency.rate : 1;
+            return currencies[currencyShort] ? currencies[currencyShort].value : 1;
         };
 
         const rateFrom = getCurrencyRate(conversionData.currencyHave);

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Clock from "../Clock";
 import Result from "./Result";
 import {
@@ -20,7 +20,7 @@ import { useCalculateResult } from "./useCalculateResult";
 
 const Form = () => {
     const inputRef = useRef(null);
-    const { currencies, loading, error } = useFetchCurrencies();
+    const { data: currencies, loading, error, date } = useFetchCurrencies();
     const {
         amount, setAmount,
         initialAmount, setInitialAmount,
@@ -29,7 +29,6 @@ const Form = () => {
         conversionData, setConversionData,
         initializeCurrencies
     } = useCurrencyForm(currencies);
-
     const { result, calculateResult } = useCalculateResult(currencies, conversionData, amount);
 
     const onFormSubmit = (event) => {
@@ -44,10 +43,12 @@ const Form = () => {
         inputRef.current.focus();
     };
 
-    if (currencies.length > 0 && !conversionData.currencyHave && !conversionData.currencyGet) {
-        initializeCurrencies();
-        calculateResult();
-    }
+    useEffect(() => {
+        if (currencies && !conversionData.currencyHave && !conversionData.currencyGet) {
+            initializeCurrencies();
+            calculateResult();
+        }
+    }, [currencies, conversionData, initializeCurrencies, calculateResult]);
 
     return (
         <Frame onSubmit={onFormSubmit}>
@@ -56,7 +57,7 @@ const Form = () => {
             {loading && <Loading>Please wait. Currency loading in progress...</Loading>}
             {error && <Error>Sorry, we couldn't fetch the currency rates at the moment.
                 Please check your internet connection and try again later.</Error>}
-            {!loading && !error && (
+            {!loading && !error && currencies && (
                 <>
                     <Section>
                         <SectionTitle>Wymieniam*</SectionTitle>
@@ -79,12 +80,12 @@ const Form = () => {
                                 ...conversionData, currencyHave: target.value
                             })}
                         >
-                            {currencies.map(currency => (
+                            {Object.keys(currencies).map(currency => (
                                 <option
-                                    key={currency.short}
-                                    value={currency.short}
+                                    key={currency}
+                                    value={currency}
                                 >
-                                    {currency.name}
+                                    {currency}
                                 </option>
                             ))}
                         </Selection>
@@ -99,12 +100,12 @@ const Form = () => {
                                 ...conversionData, currencyGet: target.value
                             })}
                         >
-                            {currencies.map(currency => (
+                            {Object.keys(currencies).map(currency => (
                                 <option
-                                    key={currency.short}
-                                    value={currency.short}
+                                    key={currency}
+                                    value={currency}
                                 >
-                                    {currency.name}
+                                    {currency}
                                 </option>
                             ))}
                         </Selection>
@@ -117,6 +118,7 @@ const Form = () => {
                     </ExpendedSection>
                     {result !== null && (
                         <Result
+                            date={new Date(date)}
                             conversionedAmount={initialAmount}
                             amount={result}
                             currencyGet={currencyGet}

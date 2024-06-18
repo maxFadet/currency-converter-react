@@ -12,7 +12,7 @@ export const useCurrencyForm = (currencies) => {
     });
 
     useEffect(() => {
-        if (currencies.length > 0) {
+        if (currencies && Object.keys(currencies).length > 0) {
             initializeCurrencies();
         }
     }, [currencies]);
