@@ -23,10 +23,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 &nbsp;
   - Applied immutability in JavaScript
+  - localStorage
+  - Axios with Async/Await
+  - try...catch statement
   - React useState Hook
   - React useEffect Hook
   - React custom Hook
-  - Asynchronous JavaScript
   - ES6+ Features JavaScript
   - CSS Grid Layout
   - CSS Flex Layout
