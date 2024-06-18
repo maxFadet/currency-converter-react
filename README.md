@@ -28,6 +28,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - try...catch statement
   - React useState Hook
   - React useEffect Hook
+  - React useRef Hook
   - React custom Hook
   - ES6+ Features JavaScript
   - CSS Grid Layout
