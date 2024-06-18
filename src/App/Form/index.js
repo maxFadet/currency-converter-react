@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Clock from "../Clock";
 import Result from "./Result";
 import {
@@ -21,14 +21,19 @@ import { useCalculateResult } from "./useCalculateResult";
 
 const Form = () => {
     const inputRef = useRef(null);
-    const { data: currencies, loading, error, date } = useFetchCurrencies();
+    const {
+        data:
+        currencies,
+        loading,
+        error,
+        date
+    } = useFetchCurrencies();
     const {
         amount, setAmount,
         initialAmount, setInitialAmount,
         currencyHave, setCurrencyHave,
         currencyGet, setCurrencyGet,
         conversionData, setConversionData,
-        initializeCurrencies
     } = useCurrencyForm(currencies);
     const { result, calculateResult } = useCalculateResult(currencies, conversionData, amount);
 
@@ -44,20 +49,18 @@ const Form = () => {
         inputRef.current.focus();
     };
 
-    useEffect(() => {
-        if (currencies && !conversionData.currencyHave && !conversionData.currencyGet) {
-            initializeCurrencies();
-            calculateResult();
-        }
-    }, [currencies, conversionData, initializeCurrencies, calculateResult]);
-
     return (
         <Frame onSubmit={onFormSubmit}>
             <Clock />
             <Title>Kalkulator walutowy</Title>
-            {loading && <Loading>Please wait. Currency loading in progress...</Loading>}
-            {error && <Error>Sorry, we couldn't fetch the currency rates at the moment.
-                Please check your internet connection and try again later.</Error>}
+            {loading &&
+                <Loading>
+                    Please wait. Currency loading in progress...
+                </Loading>}
+            {error &&
+                <Error>Sorry, we couldn't fetch the currency rates at the moment.
+                    Please check your internet connection and try again later.
+                </Error>}
             {!loading && !error && currencies && (
                 <>
                     <Section>

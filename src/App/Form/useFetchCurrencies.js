@@ -25,13 +25,12 @@ export const useFetchCurrencies = () => {
             } else {
                 try {
                     const response = await axios.get(API);
-                    console.log(response.data);
 
                     const dataToCache = {
                         data: response.data.data,
                         date: response.data.meta.last_updated_at
                     };
-                    
+
                     localStorage.setItem("currenciesData", JSON.stringify(dataToCache));
 
                     setRatesData({

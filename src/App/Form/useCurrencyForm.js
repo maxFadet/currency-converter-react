@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export const useCurrencyForm = (currencies) => {
+export const useCurrencyForm = () => {
     const [amount, setAmount] = useState("");
     const [initialAmount, setInitialAmount] = useState("");
     const [currencyHave, setCurrencyHave] = useState("PLN");
@@ -11,28 +11,11 @@ export const useCurrencyForm = (currencies) => {
         currencyGet: "USD",
     });
 
-    useEffect(() => {
-        if (currencies && Object.keys(currencies).length > 0) {
-            initializeCurrencies();
-        }
-    }, [currencies]);
-
-    const initializeCurrencies = () => {
-        setCurrencyHave("PLN");
-        setCurrencyGet("USD");
-        setConversionData({
-            amount: "",
-            currencyHave: "PLN",
-            currencyGet: "USD",
-        });
-    };
-
     return {
         amount, setAmount,
         initialAmount, setInitialAmount,
         currencyHave, setCurrencyHave,
         currencyGet, setCurrencyGet,
-        conversionData, setConversionData,
-        initializeCurrencies
+        conversionData, setConversionData
     };
 };
