@@ -6,13 +6,13 @@ export const Container = styled.div`
 
 export const Content = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
+
   margin: ${({ theme }) => theme.spacing.medium} 0;
 `;
 
 export const SmallContent = styled(Content)`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  font-weight: ${({ theme }) => theme.fontWeight.normal};
+  
   word-break: normal;
   line-height: 1.5;
 `;

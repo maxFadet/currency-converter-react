@@ -18,10 +18,10 @@ const Result = ({
                 <Separator>
                     =
                 </Separator>
-                <span>
+                <strong>
                     {amount}
                     {currencyGet}
-                </span>
+                </strong>
             </Content>
             <SmallContent>
                 <p>
