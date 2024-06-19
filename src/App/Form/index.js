@@ -13,7 +13,7 @@ import {
     Button,
     Loading,
     Error,
-    ResultContainer
+    ResultContainer,
 } from "./styled";
 import { useFetchCurrencies } from "./useFetchCurrencies";
 import { useCurrencyForm } from "./useCurrencyForm";
@@ -21,7 +21,13 @@ import { useCalculateResult } from "./useCalculateResult";
 
 const Form = () => {
     const inputRef = useRef(null);
-    const { data: currencies, loading, error, date } = useFetchCurrencies();
+    const {
+        data:
+        currencies,
+        loading,
+        error,
+        date
+    } = useFetchCurrencies();
     const {
         amount,
         initialAmount,
@@ -31,7 +37,7 @@ const Form = () => {
         handleAmountChange,
         handleCurrencyHaveChange,
         handleCurrencyGetChange,
-        onFormSubmit
+        onFormSubmit,
     } = useCurrencyForm(currencies);
     const { result, calculateResult } = useCalculateResult(currencies, conversionData, amount);
 
@@ -40,7 +46,7 @@ const Form = () => {
     };
 
     return (
-        <Frame onSubmit={(e) => onFormSubmit(e, calculateResult)}>
+        <Frame onSubmit={(event) => onFormSubmit(event, calculateResult)}>
             <Clock />
             <Title>Kalkulator walutowy</Title>
             {loading && (
@@ -73,7 +79,7 @@ const Form = () => {
                             value={conversionData.currencyHave}
                             onChange={({ target }) => handleCurrencyHaveChange(target.value)}
                         >
-                            {Object.keys(currencies).map(currency => (
+                            {Object.keys(currencies).map((currency) => (
                                 <option key={currency} value={currency}>
                                     {currency}
                                 </option>
@@ -88,7 +94,7 @@ const Form = () => {
                             value={conversionData.currencyGet}
                             onChange={({ target }) => handleCurrencyGetChange(target.value)}
                         >
-                            {Object.keys(currencies).map(currency => (
+                            {Object.keys(currencies).map((currency) => (
                                 <option key={currency} value={currency}>
                                     {currency}
                                 </option>
