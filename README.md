@@ -23,6 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 &nbsp;
   - Applied immutability in JavaScript
+  - Fetches real-time currency rates from an API
   - localStorage
   - Axios with Async/Await
   - try...catch statement
@@ -66,6 +67,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
    
 8. **Always up-to-date exchange rates:**
    - Data on current exchange rates are sourced from official sources and are always kept up to date.
+  
+9. **Caches data for performance optimization:**
+   - Caches data locally to enhance performance by storing fetched currency rates in the browser's localStorage. This approach minimizes repetitive API calls and ensures faster response times when accessing currency conversion functionalities.
 
 &nbsp;
 ## The demonstration of the project's main functions:
