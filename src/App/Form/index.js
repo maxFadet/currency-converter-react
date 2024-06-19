@@ -21,46 +21,37 @@ import { useCalculateResult } from "./useCalculateResult";
 
 const Form = () => {
     const inputRef = useRef(null);
+    const { data: currencies, loading, error, date } = useFetchCurrencies();
     const {
-        data:
-        currencies,
-        loading,
-        error,
-        date
-    } = useFetchCurrencies();
-    const {
-        amount, setAmount,
-        initialAmount, setInitialAmount,
-        currencyHave, setCurrencyHave,
-        currencyGet, setCurrencyGet,
-        conversionData, setConversionData,
+        amount,
+        initialAmount,
+        currencyHave,
+        currencyGet,
+        conversionData,
+        handleAmountChange,
+        handleCurrencyHaveChange,
+        handleCurrencyGetChange,
+        onFormSubmit
     } = useCurrencyForm(currencies);
     const { result, calculateResult } = useCalculateResult(currencies, conversionData, amount);
-
-    const onFormSubmit = (event) => {
-        event.preventDefault();
-        setInitialAmount(amount);
-        setCurrencyHave(conversionData.currencyHave);
-        setCurrencyGet(conversionData.currencyGet);
-        calculateResult();
-    };
 
     const focusInput = () => {
         inputRef.current.focus();
     };
 
     return (
-        <Frame onSubmit={onFormSubmit}>
+        <Frame onSubmit={(e) => onFormSubmit(e, calculateResult)}>
             <Clock />
             <Title>Kalkulator walutowy</Title>
-            {loading &&
-                <Loading>
-                    Please wait. Currency loading in progress...
-                </Loading>}
-            {error &&
-                <Error>Sorry, we couldn't fetch the currency rates at the moment.
+            {loading && (
+                <Loading>Please wait. Currency loading in progress...</Loading>
+            )}
+            {error && (
+                <Error>
+                    Sorry, we couldn't fetch the currency rates at the moment.
                     Please check your internet connection and try again later.
-                </Error>}
+                </Error>
+            )}
             {!loading && !error && currencies && (
                 <>
                     <Section>
@@ -75,20 +66,15 @@ const Form = () => {
                             required
                             min="0.01"
                             value={amount}
-                            onChange={({ target }) => setAmount(target.value.slice(0, 13))}
+                            onChange={({ target }) => handleAmountChange(target.value)}
                         />
                         <Selection
                             name="currencyHave"
                             value={conversionData.currencyHave}
-                            onChange={({ target }) => setConversionData({
-                                ...conversionData, currencyHave: target.value
-                            })}
+                            onChange={({ target }) => handleCurrencyHaveChange(target.value)}
                         >
                             {Object.keys(currencies).map(currency => (
-                                <option
-                                    key={currency}
-                                    value={currency}
-                                >
+                                <option key={currency} value={currency}>
                                     {currency}
                                 </option>
                             ))}
@@ -100,15 +86,10 @@ const Form = () => {
                         <Selection
                             name="currencyGet"
                             value={conversionData.currencyGet}
-                            onChange={({ target }) => setConversionData({
-                                ...conversionData, currencyGet: target.value
-                            })}
+                            onChange={({ target }) => handleCurrencyGetChange(target.value)}
                         >
                             {Object.keys(currencies).map(currency => (
-                                <option
-                                    key={currency}
-                                    value={currency}
-                                >
+                                <option key={currency} value={currency}>
                                     {currency}
                                 </option>
                             ))}
