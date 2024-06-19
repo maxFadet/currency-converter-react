@@ -22,12 +22,14 @@ export const useFetchCurrencies = () => {
                 const lastFetchDate = new Date(cachedDate);
 
                 if (Date.now() - lastFetchDate.getTime() < oneDay) {
-                    setRatesData({
-                        data: parsedData.data,
-                        date: new Date(parsedData.date),
-                        loading: false,
-                        error: null,
-                    });
+                    setTimeout(() => {
+                        setRatesData({
+                            data: parsedData.data,
+                            date: new Date(parsedData.date),
+                            loading: false,
+                            error: null,
+                        });
+                    }, 2000);
                     return;
                 }
             }
@@ -37,25 +39,30 @@ export const useFetchCurrencies = () => {
 
                 const dataToCache = {
                     data: response.data.data,
-                    date: response.data.meta.last_updated_at
+                    date: response.data.meta.last_updated_at,
                 };
 
                 localStorage.setItem("currenciesData", JSON.stringify(dataToCache));
                 localStorage.setItem("lastFetchDate", new Date().toISOString());
 
-                setRatesData({
-                    data: response.data.data,
-                    loading: false,
-                    error: null,
-                    date: new Date(response.data.meta.last_updated_at),
-                });
+                setTimeout(() => {
+                    setRatesData({
+                        data: response.data.data,
+                        loading: false,
+                        error: null,
+                        date: new Date(response.data.meta.last_updated_at),
+                    });
+                }, 2000);
+
             } catch (error) {
-                setRatesData({
-                    data: null,
-                    date: null,
-                    loading: false,
-                    error: error.message,
-                });
+                setTimeout(() => {
+                    setRatesData({
+                        data: null,
+                        date: null,
+                        loading: false,
+                        error: error.message,
+                    });
+                }, 2000);
             }
         };
 
