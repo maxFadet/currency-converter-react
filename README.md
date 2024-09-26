@@ -6,7 +6,7 @@ https://maxfadet.github.io/currency-converter-react/
 
 ## Description:
 
- Description This is a web application that allows the user to convert an amount from one currency to another. The user can select the currency to exchange and the currency they want to convert the amount into. After entering the amount and selecting currencies, the user clicks the "Przelicz" button to perform the conversion.
+This is a web application that allows the user to convert an amount from one currency to another. The user can select the currency to exchange and the currency they want to convert the amount into. After entering the amount and selecting currencies, the user clicks the "Przelicz" button to perform the conversion.
  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
