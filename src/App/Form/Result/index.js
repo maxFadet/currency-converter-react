@@ -1,4 +1,4 @@
-import { Container, Content, Separator, SmallContent } from "./styled"
+import { Container, Content, Separator, SmallContent } from "./styled";
 
 const Result = ({
     amount,
