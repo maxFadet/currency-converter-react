@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.main`
+  margin: ${({ theme }) => theme.spacing.containerMargin};
+  padding: ${({ theme }) => theme.spacing.medium};
+  max-width: ${({ theme }) => theme.dimensions.containerMaxWidth};
+`;
+
 export const Frame = styled.form`
   display: grid;
   grid-gap: ${({ theme }) => theme.spacing.large};
