@@ -52,7 +52,9 @@ const Form = () => {
                 <Clock />
                 <Title>Kalkulator walutowy</Title>
                 {loading && (
-                    <Loading>Please wait. Currency loading in progress...</Loading>
+                    <Loading>
+                        Please wait. Currency loading in progress...
+                    </Loading>
                 )}
                 {error && (
                     <Error>
