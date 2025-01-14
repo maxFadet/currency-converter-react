@@ -50,7 +50,9 @@ const Form = () => {
         <Container>
             <Frame onSubmit={(event) => onFormSubmit(event, calculateResult)}>
                 <Clock />
-                <Title>Kalkulator walutowy</Title>
+                <Title>
+                    Kalkulator walutowy
+                </Title>
                 {loading && (
                     <Loading>
                         Please wait. Currency loading in progress...
