@@ -7,7 +7,8 @@ function App() {
       <CenteredContent>
         <Form />
       </CenteredContent>
-      <Footer>© 2024 Created by
+      <Footer>
+        © 2024 Created by
         <Link
           href="https://github.com/maxFadet?tab=repositories"
           target="_blank"
