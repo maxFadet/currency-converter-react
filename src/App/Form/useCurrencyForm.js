@@ -47,6 +47,7 @@ export const useCurrencyForm = (currencies) => {
         calculateResult();
     };
 
+
     return {
         amount,
         setAmount,
