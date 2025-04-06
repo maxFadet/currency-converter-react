@@ -78,7 +78,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 </div>
 
 &nbsp;
-
 ## The demonstration of page responsiveness:
 <div align="center">
 <img src="https://raw.githubusercontent.com/maxFadet/currency-converter-react/master/responsiveness.gif" alt="Responsiveness" width="600"/>
