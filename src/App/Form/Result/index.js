@@ -7,7 +7,7 @@ const Result = ({
     conversionedAmount,
     date
 }) => {
-
+ 
     return (
         <Container>
             <Content>
